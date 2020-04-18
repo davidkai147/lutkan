@@ -13,6 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['namespace' => 'Auth'], function () {
+    // ====================== LOGIN ========================
+    $prefix = '';
+    $controllerName = 'login';
+    Route::group(['prefix' => $prefix], function () use ($controllerName) {
+
+        Route::get('/', function() {
+            return redirect('/login');
+        });
+
+        $controller = ucfirst($controllerName) . 'Controller@';
+        Route::get( '/login', ['as' => 'login', 'uses' => $controller . 'showLoginForm'])->middleware('check.login');
+        Route::post( '/postLogin', ['as' => 'postLogin', 'uses' => $controller . 'login']);
+    });
 });
