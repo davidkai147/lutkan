@@ -29,4 +29,12 @@ class LoginController extends Controller
             }
         }
     }
+
+    public function logout(Request $request)
+    {
+        // clear user info session
+        //user_clear_info();
+        auth()->logout();
+        return redirect()->route('login');
+    }
 }

@@ -26,5 +26,6 @@ Route::group(['namespace' => 'Auth'], function () {
         $controller = ucfirst($controllerName) . 'Controller@';
         Route::get( '/login', ['as' => 'login', 'uses' => $controller . 'showLoginForm'])->middleware('check.login');
         Route::post( '/postLogin', ['as' => 'postLogin', 'uses' => $controller . 'login']);
+        Route::get( '/logout', ['as' => 'logout', 'uses' => $controller . 'logout']);
     });
 });
