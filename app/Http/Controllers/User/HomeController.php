@@ -15,7 +15,7 @@ class HomeController extends BaseController
      */
     public function __construct()
     {
-        $this->moduleViewPath .= 'user.home';
+        $this->moduleViewPath .= $this->userViewPath . '.home';
         $this->title = 'Dashboard';
         View::share('title', $this->title);
     }
