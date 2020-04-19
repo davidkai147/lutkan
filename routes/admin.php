@@ -1,5 +1,6 @@
 <?php
 
+use App\Constants\AppConstants;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,11 +13,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-$prefixAdmin = 'admin';
-Route::group(['prefix' => $prefixAdmin, 'namespace' => 'Admin', 'middleware' => 'permission.admin'], function () use ($prefixAdmin) {
+$prefixAdmin = CONST_ADMIN_PREFIX;
+Route::group(['prefix' => $prefixAdmin, 'namespace' => 'Admin', 'middleware' => ['role:' . AppConstants::ROLE_SUPER_ADMIN]], function () use ($prefixAdmin) {
 
     // ====================== HOME ========================
-    $prefix = '';
+    $prefix = 'home';
     $controllerName = 'home';
     $controller = ucfirst($controllerName) . 'Controller@';
     Route::group(['prefix' => $prefix], function () use ($prefix, $controller, $prefixAdmin) {

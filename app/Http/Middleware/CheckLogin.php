@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Constants\AppConstants;
 use Closure;
 
 class CheckLogin
@@ -17,8 +18,11 @@ class CheckLogin
     {
         $userInfo = auth()->user();
         if(!empty($userInfo)) {
-            if ($userInfo['account_type'] == 'admin') {
-                return redirect()->route('admin.home');
+            $userRoleName = $userInfo->getRoleNames()->first();
+            if ($userRoleName == AppConstants::ROLE_SUPER_ADMIN) {
+                return redirect()->route(CONST_ADMIN_PREFIX . '.home');
+            } else {
+                return redirect()->route(CONST_USER_PREFIX . '.home');
             }
         }
 

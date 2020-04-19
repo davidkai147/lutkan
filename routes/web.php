@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+$prefixUser = CONST_USER_PREFIX;
 Route::group(['namespace' => 'Auth'], function () {
     // ====================== LOGIN ========================
     $prefix = '';
@@ -28,4 +28,16 @@ Route::group(['namespace' => 'Auth'], function () {
         Route::post( '/postLogin', ['as' => 'postLogin', 'uses' => $controller . 'login']);
         Route::get( '/logout', ['as' => 'logout', 'uses' => $controller . 'logout']);
     });
+
+});
+
+Route::group(['namespace' => 'User', 'middleware' => ['permission.admin']], function () use ($prefixUser) {
+    // ====================== HOME ========================
+    $prefix = 'home';
+    $controllerName = 'home';
+    $controller = ucfirst($controllerName) . 'Controller@';
+    Route::group(['prefix' => $prefix], function () use ($prefix, $controller, $prefixUser) {
+        Route::get( '/', ['as' => $prefixUser . '.home', 'uses' => $controller . 'index']);
+    });
+
 });

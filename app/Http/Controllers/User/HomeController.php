@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\BaseController;
 use Illuminate\Http\Response;
@@ -15,8 +15,7 @@ class HomeController extends BaseController
      */
     public function __construct()
     {
-        parent::__construct();
-        $this->moduleViewPath .= $this->adminViewPath . '.home';
+        $this->moduleViewPath .= 'user.home';
         $this->title = 'Dashboard';
         View::share('title', $this->title);
     }

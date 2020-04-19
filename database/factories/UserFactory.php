@@ -20,7 +20,7 @@ use Illuminate\Support\Str;
 $factory->define(User::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
+        'email' => 'admin@gmail.com',
         'email_verified_at' => now(),
         'account_type' => 'admin',
         'status' => 'active',

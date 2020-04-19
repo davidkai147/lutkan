@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Constants\AppConstants;
 use App\User;
 use Closure;
 
@@ -16,15 +17,12 @@ class PermissionAdmin
      */
     public function handle($request, Closure $next)
     {
-        $userInfo = auth()->user();
-        if (!empty($userInfo)) {
-            if ($userInfo['account_type'] == 'admin') {
-                return $next($request);
-            }
-            return redirect()->route('notify.noPermission');
+        $userRole = auth()->user()->getRoleNames()->first();
+        $firstSegment = $request->segment(1);
+        if ($firstSegment !== CONST_ADMIN_PREFIX && $userRole == AppConstants::ROLE_SUPER_ADMIN) {
+            abort(403, 'Bạn không có quyền truy cập');
         }
-
-        return redirect()->route('login');
+        return $next($request);
     }
 }
 

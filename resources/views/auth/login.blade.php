@@ -2,7 +2,7 @@
 @section('custom_css')
     <link rel="stylesheet" href="{{ asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
 @endsection
-@section('content')
+@section('body')
     <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
