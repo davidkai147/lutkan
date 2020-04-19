@@ -10,20 +10,22 @@ use Illuminate\Http\Request;
 class LoginController extends Controller
 {
 
-    public function showLoginForm() {
+    public function showLoginForm()
+    {
         return view('auth.login');
     }
 
-    public function login(LoginRequest $request) {
+    public function login(LoginRequest $request)
+    {
         if ($request->isMethod('post')) {
             $params = $request->all();
             $userModel = new User();
             $userInfo = ['email' => $params['email'], 'password' => $params['password']];
 
-            if (!auth()->attempt($userInfo, $request->get('remember'))) {
+            if (!auth()->attempt($userInfo, $request->get('remember_me'))) {
                 return redirect()->route('login')->with('app_error', 'Tài khoản hoặc mật khẩu không chính xác!');
             } else {
-                dd('ahihi');
+                return redirect()->route('admin.home');
             }
         }
     }

@@ -12,7 +12,7 @@
         <div class="card">
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Sign in to start your session</p>
-                @include('templates.notify')
+                <x-notify />
                 <form action="{{ route('postLogin') }}" method="post">
                     @csrf
                     <div class="input-group mb-3">

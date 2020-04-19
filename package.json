@@ -11,7 +11,7 @@
     },
     "devDependencies": {
         "moment": "^2.24.0",
-        "admin-lte": "^3.0",
+        "admin-lte": "^3.0.4",
         "axios": "^0.19",
         "cross-env": "^7.0",
         "laravel-mix": "^5.0.1",

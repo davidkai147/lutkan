@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('account_type', 20);
             $table->string('status', 20);
+            $table->string('avatar', 128)->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->bigInteger('created_by')->nullable();

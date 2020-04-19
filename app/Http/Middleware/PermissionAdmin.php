@@ -2,27 +2,29 @@
 
 namespace App\Http\Middleware;
 
+use App\User;
 use Closure;
 
-class CheckLogin
+class PermissionAdmin
 {
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure $next
      * @return mixed
      */
     public function handle($request, Closure $next)
     {
         $userInfo = auth()->user();
-        if(!empty($userInfo)) {
+        if (!empty($userInfo)) {
             if ($userInfo['account_type'] == 'admin') {
-                return redirect()->route('admin.home');
+                return $next($request);
             }
+            return redirect()->route('notify.noPermission');
         }
 
-        return $next($request);
+        return redirect()->route('login');
     }
 }
 
