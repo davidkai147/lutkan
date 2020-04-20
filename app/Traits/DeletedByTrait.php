@@ -8,6 +8,6 @@ trait DeletedByTrait
 {
     public function fillDeletedBy()
     {
-        
+
     }
 }
