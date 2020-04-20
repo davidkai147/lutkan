@@ -1,0 +1,14 @@
+<?php
+
+namespace DummyNamespace;
+use App\Repositories\BaseRepository;
+use App\Models\Dummy;
+
+class DummyRepository extends BaseRepository implements DummyRepositoryInterface
+{
+    //lấy model tương ứng
+    public function getModel()
+    {
+        return Dummy::class;
+    }
+}

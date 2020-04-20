@@ -1,0 +1,18 @@
+<?php
+
+namespace App\Services;
+
+use App\Repositories\Dummy\DummyRepository;
+
+class DummyService
+{
+    /**
+     * @var DummyRepository
+     */
+    private $dummyRepository;
+
+    public function __construct(DummyRepository $dummyRepository)
+    {
+        $this->dummyRepository = $dummyRepository;
+    }
+}

@@ -1,0 +1,7 @@
+<?php
+namespace App\Repositories\Dummy;
+
+interface DummyRepositoryInterface
+{
+    
+}
