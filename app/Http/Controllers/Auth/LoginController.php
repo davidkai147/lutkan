@@ -3,20 +3,26 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Constants\AppConstants;
+use App\Http\Controllers\API\ApiBaseController;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
-use App\User;
+use App\Models\User;
+use App\Transformers\UserTransformer;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
+use Tymon\JWTAuth\Contracts\Providers\JWT;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
-class LoginController extends Controller
+class LoginController extends ApiBaseController
 {
-
-    public function __construct()
+    protected $jwt;
+    public function __construct(JWT $jwt, Request $request)
     {
-        View::share('title', 'Login');
+        $this->middleware('user', ['except' => ['login']]);
+        $this->jwt = $jwt;
     }
 
     /**
@@ -29,25 +35,16 @@ class LoginController extends Controller
 
     /**
      * @param LoginRequest $request
-     * @return RedirectResponse
+     * @return \Flugg\Responder\Http\Responses\SuccessResponseBuilder|\Illuminate\Http\JsonResponse
      */
     public function login(LoginRequest $request)
     {
         if ($request->isMethod('post')) {
-            $params = $request->all();
-            $userModel = new User();
-            $userInfo = ['email' => $params['email'], 'password' => $params['password']];
+            $user = User::first();
 
-            if (!auth()->attempt($userInfo, $request->get('remember_me'))) {
-                return redirect()->route('login')->with('app_error', 'Tài khoản hoặc mật khẩu không chính xác!');
-            } else {
-                $userRoleName = auth()->user()->getRoleNames()->first();
-                if ($userRoleName == AppConstants::ROLE_SUPER_ADMIN) {
-                    return redirect()->route('admin.home');
-                } else {
-                    return redirect()->route('user.home');
-                }
-            }
+            $token = JWTAuth::fromUser($user, ['tpe' => 'user']);
+
+            //return $this->success($user, UserTransformer::class)->respond(JsonResponse::HTTP_OK);
         }
     }
 

@@ -166,6 +166,8 @@ return [
          * Package Service Providers...
          */
         Spatie\Permission\PermissionServiceProvider::class,
+        Flugg\Responder\ResponderServiceProvider::class,
+        Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -227,7 +229,9 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        // Package
+        'Responder' => Flugg\Responder\Facades\Responder::class,
+        'Transformation' => Flugg\Responder\Facades\Transformation::class
     ],
 
 ];
