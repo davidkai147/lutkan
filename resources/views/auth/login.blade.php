@@ -58,3 +58,14 @@
     <!-- /.login-box -->
     </body>
 @endsection
+@section('custom_js')
+    <script>
+        API('users/login', {
+            email: 'admin@gmail.com',
+            password: 'password'
+        }).then(function (response) {
+            console.log(response);
+            localStorage.setItem('token', response.data.data.token);
+        });
+    </script>
+@endsection

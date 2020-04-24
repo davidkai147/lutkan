@@ -25,6 +25,7 @@ class HomeController extends BaseController
      */
     public function index()
     {
+
         return response()->view($this->moduleViewPath . '.index');
     }
 }

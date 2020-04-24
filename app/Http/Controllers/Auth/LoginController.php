@@ -12,6 +12,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use Tymon\JWTAuth\Contracts\Providers\JWT;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -21,7 +22,7 @@ class LoginController extends ApiBaseController
     protected $jwt;
     public function __construct(JWT $jwt, Request $request)
     {
-        $this->middleware('user', ['except' => ['login']]);
+        // $this->middleware('user', ['except' => ['login']]);
         $this->jwt = $jwt;
     }
 
@@ -42,10 +43,15 @@ class LoginController extends ApiBaseController
         if ($request->isMethod('post')) {
             $user = User::first();
 
-            $token = JWTAuth::fromUser($user, ['tpe' => 'user']);
-
-            //return $this->success($user, UserTransformer::class)->respond(JsonResponse::HTTP_OK);
+            $token = auth('api')->attempt($request->all());
+            session(['Authorization' => $token]);
+            return $this->success($user, new UserTransformer($token))->respond(JsonResponse::HTTP_OK);
         }
+    }
+
+    public function getinfo(Request $request)
+    {
+        dd(auth('api')->user());
     }
 
     /**

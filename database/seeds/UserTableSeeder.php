@@ -1,8 +1,9 @@
 <?php
 
 use App\Constants\AppConstants;
-use App\User;
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 class UserTableSeeder extends Seeder
@@ -23,7 +24,7 @@ class UserTableSeeder extends Seeder
             'email_verified_at' => now(),
             'account_type' => 'user',
             'status' => 'active',
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'password' => Hash::make('password'), // password
             'remember_token' => Str::random(10),
         ]);
         $user2->assignRole(AppConstants::ROLE_PROJECT_MANAGER);

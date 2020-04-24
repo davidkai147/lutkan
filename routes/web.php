@@ -31,13 +31,13 @@ Route::group(['namespace' => 'Auth'], function () {
 
 });
 
-Route::group(['namespace' => 'User', 'middleware' => ['permission.admin']], function () use ($prefixUser) {
+Route::group(['namespace' => 'User', 'middleware' => []], function () use ($prefixUser) {
     // ====================== HOME ========================
     $prefix = 'home';
     $controllerName = 'home';
     $controller = ucfirst($controllerName) . 'Controller@';
     Route::group(['prefix' => $prefix], function () use ($prefix, $controller, $prefixUser) {
-        Route::get( '/', ['as' => $prefixUser . '.home', 'uses' => $controller . 'index']);
+        Route::any( '/', ['as' => $prefixUser . '.home', 'uses' => $controller . 'index']);
     });
 
 });

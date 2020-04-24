@@ -14,7 +14,7 @@ class SideBar extends Component
      */
     public function __construct()
     {
-        $this->username = auth()->user()->name;
+        $this->username = '';//auth('user')->user()->name;
     }
 
     /**
