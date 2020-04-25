@@ -22,6 +22,7 @@ class LoginController extends ApiBaseController
     protected $jwt;
     public function __construct(JWT $jwt, Request $request)
     {
+        parent::__construct($request);
         // $this->middleware('user', ['except' => ['login']]);
         $this->jwt = $jwt;
     }
@@ -41,11 +42,10 @@ class LoginController extends ApiBaseController
     public function login(LoginRequest $request)
     {
         if ($request->isMethod('post')) {
-            $user = User::first();
 
             $token = auth('api')->attempt($request->all());
             session(['Authorization' => $token]);
-            return $this->success($user, new UserTransformer($token))->respond(JsonResponse::HTTP_OK);
+            return $this->success(['token' => $token], null)->respond(JsonResponse::HTTP_OK);
         }
     }
 

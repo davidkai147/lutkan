@@ -25,7 +25,6 @@ Route::group(['namespace' => 'Auth'], function () {
 
         $controller = ucfirst($controllerName) . 'Controller@';
         Route::get( '/login', ['as' => 'login', 'uses' => $controller . 'showLoginForm'])->middleware('check.login');
-        Route::post( '/postLogin', ['as' => 'postLogin', 'uses' => $controller . 'login']);
         Route::get( '/logout', ['as' => 'logout', 'uses' => $controller . 'logout']);
     });
 
@@ -37,7 +36,7 @@ Route::group(['namespace' => 'User', 'middleware' => []], function () use ($pref
     $controllerName = 'home';
     $controller = ucfirst($controllerName) . 'Controller@';
     Route::group(['prefix' => $prefix], function () use ($prefix, $controller, $prefixUser) {
-        Route::any( '/', ['as' => $prefixUser . '.home', 'uses' => $controller . 'index']);
+        Route::get( '/', ['as' => $prefixUser . '.home', 'uses' => $controller . 'index']);
     });
 
 });
