@@ -12,7 +12,7 @@
         <div class="card">
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Sign in to start your session</p>
-                <x-notify />
+                <div class="alert alert-danger" style="display:none"></div>
                 <form>
                     @csrf
                     <div class="input-group mb-3">
@@ -42,7 +42,7 @@
                         </div>
                         <!-- /.col -->
                         <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                            <button type="submit" class="btn btn-primary btn-block btnLogin">Sign In</button>
                         </div>
                         <!-- /.col -->
                     </div>
@@ -60,12 +60,33 @@
 @endsection
 @section('custom_js')
     <script>
-        API('users/login', {
-            email: 'admin@gmail.com',
-            password: 'password'
-        }).then(function (response) {
-            console.log(response);
-            localStorage.setItem('token', response.data.data.token);
+        // Check isLogin or not
+        $(document).ready(function() {
+            let token = localStorage.getItem('token');
+            if (token !== null) {
+                API('users/info', {}).then(function (response) {
+                    if (response.data.data) {
+                        window.location.replace(CONFIG.BASE_URL + "home");
+                    }
+                })
+            }
         });
+
+        // Login function
+        $('.btnLogin').click(function(e) {
+            $('.alert-danger').hide();
+            $('.alert-danger').empty();
+            e.preventDefault();
+            API('users/login', {
+                email: $("input[name='email']").val(),
+                password: $("input[name='password']").val()
+            }).then(function (response) {
+                localStorage.setItem('token', response.data.data.token);
+                window.location.replace(CONFIG.BASE_URL + "home");
+            }).catch(function(error) {
+                handleErrorLaravel('notify', error.response.data, 'error');
+            });
+        });
+
     </script>
 @endsection

@@ -15,6 +15,18 @@ class AppConstants
     const UPDATE_USERS  = 'UPDATE_USERS';
     const DELETE_USERS  = 'DELETE_USERS';
 
+    // Roles permission
+    const CREATE_ROLES  = 'CREATE_ROLES';
+    const READ_ROLES  = 'READ_ROLES';
+    const UPDATE_ROLES  = 'UPDATE_ROLES';
+    const DELETE_ROLES  = 'DELETE_ROLES';
+
+    // Permissions permission
+    const CREATE_PERMISSIONS  = 'CREATE_PERMISSIONS';
+    const READ_PERMISSIONS  = 'READ_PERMISSIONS';
+    const UPDATE_PERMISSIONS  = 'UPDATE_PERMISSIONS';
+    const DELETE_PERMISSIONS  = 'DELETE_PERMISSIONS';
+
     // Projects permission
     const CREATE_PROJECTS  = 'CREATE_PROJECTS';
     const READ_PROJECTS  = 'READ_PROJECTS';

@@ -134,7 +134,7 @@
                     <span class="float-right text-muted text-sm">2 days</span>
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="{{ route('logout') }}" class="dropdown-item dropdown-footer">Logout</a>
+                <button type="button" class="dropdown-item dropdown-footer btnLogout">Logout</button>
             </div>
         </li>
     </ul>

@@ -6,16 +6,9 @@ use Illuminate\View\Component;
 
 class UserMenu extends Component
 {
-    public $permission;
-
-    /**
-     * Create a new component instance.
-     *
-     * @param $permission
-     */
-    public function __construct($permission)
+    public function __construct()
     {
-        $this->permission = $permission;
+
     }
 
     /**

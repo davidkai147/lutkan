@@ -54,6 +54,18 @@ class RolesAndPermissionsSeeder extends Seeder
         Permission::create(['name' => AppConstants::UPDATE_USERS]);
         Permission::create(['name' => AppConstants::DELETE_USERS]);
 
+        // Roles
+        Permission::create(['name' => AppConstants::CREATE_ROLES]);
+        Permission::create(['name' => AppConstants::READ_ROLES]);
+        Permission::create(['name' => AppConstants::UPDATE_ROLES]);
+        Permission::create(['name' => AppConstants::DELETE_ROLES]);
+
+        // Permission
+        Permission::create(['name' => AppConstants::CREATE_PERMISSIONS]);
+        Permission::create(['name' => AppConstants::READ_PERMISSIONS]);
+        Permission::create(['name' => AppConstants::UPDATE_PERMISSIONS]);
+        Permission::create(['name' => AppConstants::DELETE_PERMISSIONS]);
+
         // create roles and assign created permissions
 
         // this can be done as separate statements

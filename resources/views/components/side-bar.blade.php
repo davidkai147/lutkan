@@ -16,10 +16,10 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{ asset('images/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
+                <img id="userImage" src="{{ asset('images/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">{{ $username }}</a>
+                <a href="#" class="d-block"></a>
             </div>
         </div>
 
@@ -29,11 +29,7 @@
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
                 <li class="nav-header">MENU</li>
-                @role($roleSuperAdmin)
-                    <x-admin-menu />
-                @else
-                    <x-user-menu :permission="$constants" />
-                @endrole
+                <x-user-menu />
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

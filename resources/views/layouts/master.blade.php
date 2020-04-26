@@ -24,6 +24,11 @@
 <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('assets/js/app.js') }}"></script>
 <script src="{{ asset('assets/js/lutkan.min.js') }}"></script>
+<script>
+    let userRole = null;
+    let userPermissions = null;
+</script>
 @yield('custom_js')
+@yield('app_js')
 </body>
 </html>

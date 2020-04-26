@@ -6,8 +6,7 @@
 @endsection
 @section('custom_js')
     <script>
-        API('users/me', {}).then(function (response) {
-            console.log(response);
-        });
+        // Call dashboard API here
+        
     </script>
 @endsection
