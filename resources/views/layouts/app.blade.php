@@ -45,6 +45,10 @@
                     }
                 }).catch(function(error) {
                     handleErrorLaravel('toast', error.response.data, 'error');
+                    localStorage.removeItem('token');
+                    if (error.response.data.error.code == 401) {
+                        window.location.replace(CONFIG.BASE_URL + "login");
+                    }
                 });
                 return;
             }
