@@ -66,6 +66,12 @@ class RolesAndPermissionsSeeder extends Seeder
         Permission::create(['name' => AppConstants::UPDATE_PERMISSIONS]);
         Permission::create(['name' => AppConstants::DELETE_PERMISSIONS]);
 
+        // Comments
+        Permission::create(['name' => AppConstants::CREATE_COMMENTS]);
+        Permission::create(['name' => AppConstants::READ_COMMENTS]);
+        Permission::create(['name' => AppConstants::UPDATE_COMMENTS]);
+        Permission::create(['name' => AppConstants::DELETE_COMMENTS]);
+
         // create roles and assign created permissions
 
         // this can be done as separate statements
@@ -77,6 +83,7 @@ class RolesAndPermissionsSeeder extends Seeder
             AppConstants::CREATE_TASKS, AppConstants::READ_TASKS, AppConstants::UPDATE_TASKS, AppConstants::DELETE_TASKS,
             AppConstants::CREATE_TASK_TYPES, AppConstants::READ_TASK_TYPES, AppConstants::UPDATE_TASK_TYPES, AppConstants::DELETE_TASK_TYPES,
             AppConstants::CREATE_PROJECT_TASK_CATEGORIES, AppConstants::READ_PROJECT_TASK_CATEGORIES, AppConstants::UPDATE_PROJECT_TASK_CATEGORIES, AppConstants::DELETE_PROJECT_TASK_CATEGORIES,
+            AppConstants::CREATE_COMMENTS, AppConstants::READ_COMMENTS, AppConstants::UPDATE_COMMENTS, AppConstants::DELETE_COMMENTS,
         ]);
 //
 //        // or may be done by chaining

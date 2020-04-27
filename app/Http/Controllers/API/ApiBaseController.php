@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Constants\AppConstants;
 use App\Http\Controllers\Controller;
 use App\Traits\HttpResponse;
 use Illuminate\Http\Request;
@@ -38,6 +39,10 @@ class ApiBaseController extends Controller
      * @var null
      */
     protected $created_by = null;
+    /**
+     * @var string
+     */
+    protected $constants;
 
     use HttpResponse;
 
@@ -46,6 +51,7 @@ class ApiBaseController extends Controller
         $this->perPage = $request->get('perPage');
         $this->orderBy = $request->get('orderBy') ? $request->get('orderBy') : 'created_at';
         $this->direction = $request->get('direction') ? $request->get('direction') : 'desc';
+        $this->constants =  AppConstants::class;
     }
 
     protected function setIdentifier(JWT $jwt, $token = null)

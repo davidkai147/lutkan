@@ -1,7 +1,3 @@
-@inject('constants', 'App\Constants\AppConstants')
-@php
-    $roleSuperAdmin = $constants::ROLE_SUPER_ADMIN;
-@endphp
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
