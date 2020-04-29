@@ -1,5 +1,5 @@
 <li class="nav-item">
-    <a href="#" class="nav-link active">
+    <a href="{{ route('user.home') }}" class="nav-link active">
         <i class="nav-icon fas fa-tachometer-alt"></i>
         <p>
             Dashboard
@@ -7,7 +7,7 @@
     </a>
 </li>
 <li class="nav-item" data-permission="READ_USERS" style="display: none">
-    <a href="pages/calendar.html" class="nav-link">
+    <a href="#" class="nav-link">
         <i class="nav-icon fas fa-users"></i>
         <p>
             Users
@@ -18,7 +18,7 @@
     <a href="pages/gallery.html" class="nav-link">
         <i class="nav-icon fas fa-layer-group"></i>
         <p>
-            Permissions
+            Roles
         </p>
     </a>
 </li>
@@ -31,7 +31,7 @@
     </a>
 </li>
 <li class="nav-item menu_projects" data-permission="READ_PROJECTS" style="display: none">
-    <a href="pages/gallery.html" class="nav-link">
+    <a href="{{ route('user.projects', ['token' => 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sdXRrYW4uY29tXC9hcGlcL3VzZXJzXC9sb2dpbiIsImlhdCI6MTU4ODE3NzU0OSwiZXhwIjoxNTg4MTgxMTQ5LCJuYmYiOjE1ODgxNzc1NDksImp0aSI6ImNiQk53cGpYMTFkYWdEc0wiLCJzdWIiOjIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJ0cGUiOiJ1c2VyIn0.JQZFa01Kt30O0Ua8q2RFmUoID2MRAdymcA-9H0OI-nY']) }}" class="nav-link">
         <i class="nav-icon fas fa-layer-group"></i>
         <p>
             Projects

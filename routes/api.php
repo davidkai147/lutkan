@@ -28,5 +28,8 @@ Route::group(['middleware' => 'api'], function () {
         Route::group(['prefix' => 'users'], function () {
             Route::post('info', 'UserController@info');
         });
+        Route::group(['prefix' => 'projects'], function() {
+
+        });
     });
 });

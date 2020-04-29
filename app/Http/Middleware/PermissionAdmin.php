@@ -19,7 +19,7 @@ class PermissionAdmin extends BaseMiddleware
      */
     public function handle($request, Closure $next, $guard = null)
     {
-//        dd(auth($guard)->user());
+        dd(auth($guard)->user());
 //
 //        if (!empty(auth()->user())) {
 //            $userRole = auth()->user()->getRoleNames()->first();
