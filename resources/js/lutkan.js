@@ -58,6 +58,15 @@ window.Toast = (title, message, classType, autohide = true, delay = 5000) => {
     });
 };
 
+window.logout = () => {
+    API('users/logout', {}).then(function (response) {
+        localStorage.removeItem('token');
+        window.location.replace(CONFIG.BASE_URL + "login");
+    }).catch(function (error) {
+        handleErrorLaravel('toast', 'Không thể logout', 'error');
+    });
+};
+
 if (token_csrf) {
     window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token;
 } else {

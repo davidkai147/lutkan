@@ -58,12 +58,7 @@
         // Logout
         $(".btnLogout").click(function (e) {
             e.preventDefault();
-            API('users/logout', {}).then(function (response) {
-                localStorage.removeItem('token');
-                window.location.replace(CONFIG.BASE_URL + "login");
-            }).catch(function (error) {
-                handleErrorLaravel('toast', 'Không thể logout', 'error');
-            });
+            logout();
         });
     </script>
 @endsection

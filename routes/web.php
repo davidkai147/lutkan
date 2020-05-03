@@ -39,15 +39,11 @@ Route::group(['namespace' => 'User', 'middleware' => []], function () use ($pref
         Route::get( '/', ['as' => $prefixUser . '.home', 'uses' => $controller . 'index']);
     });
 
-
-
-});
-Route::group(['namespace' => 'API', 'middleware' => ['auth:api']], function () use ($prefixUser) {
-// ====================== PROJECT ========================
     $prefix = 'projects';
     $controllerName = 'project';
     $controller = ucfirst($controllerName) . 'Controller@';
-    Route::group(['prefix' => $prefix], function () use ($controller, $prefixUser) {
-        Route::get('/', ['as' => $prefixUser . '.projects' , 'uses' => $controller . '.index']);
+    Route::group(['prefix' => $prefix], function () use ($prefix, $controller, $prefixUser) {
+        Route::get('/', ['as' => $prefixUser . '.projects' , 'uses' => $controller . 'index']);
     });
+
 });

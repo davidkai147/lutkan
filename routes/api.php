@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Constants\AppConstants as constants;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +30,7 @@ Route::group(['middleware' => 'api'], function () {
             Route::post('info', 'UserController@info');
         });
         Route::group(['prefix' => 'projects'], function() {
-
+            Route::post('list', 'ProjectController@list')->middleware("user.permission:" . constants::READ_PROJECTS);
         });
     });
 });

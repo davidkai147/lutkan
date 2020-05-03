@@ -12,7 +12,7 @@
         <div class="card">
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Sign in to start your session</p>
-                <div class="alert alert-danger" style="display:none"></div>
+                <x-notify />
                 <form>
                     @csrf
                     <div class="input-group mb-3">

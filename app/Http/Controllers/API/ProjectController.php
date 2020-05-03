@@ -4,20 +4,17 @@
 namespace App\Http\Controllers\API;
 
 use App\Transformers\UserTransformer;
+use Flugg\Responder\Http\Responses\SuccessResponseBuilder;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\View;
+use Throwable;
 use Tymon\JWTAuth\Contracts\Providers\JWT;
 
 class ProjectController extends ApiBaseController
 {
     protected $jwt;
-
-    /**
-     * @var string
-     */
-    private $title;
 
     /**
      * HomeController constructor.
@@ -27,21 +24,20 @@ class ProjectController extends ApiBaseController
     public function __construct(JWT $jwt, Request $request)
     {
         parent::__construct($request);
-        $this->middleware('permission.admin:user');
-        $this->title = 'Project';
         $this->jwt = $jwt;
-        View::share([
-            'title' => $this->title,
-            'constants' => $this->constants
-        ]);
     }
 
     /**
-     * @return Response
+     * @param Request $request
+     * @return JsonResponse
+     * @throws Throwable
      */
-    public function index(Request $request)
+    public function list(Request $request)
     {
-        dd($request->header('token'));
-        return response()->view('projects.index');
+        $title = "HDTuto.com";
+
+        $view = view("projects.ajaxView",compact('title'))->render();
+
+        return $this->successView($view);
     }
 }

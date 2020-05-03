@@ -75,4 +75,9 @@ trait HttpResponse
     {
         return $this->error($errorCode, $message)->respond(JsonResponse::HTTP_UNPROCESSABLE_ENTITY);
     }
+
+    public function successView($view = null)
+    {
+        return $this->success(['view' => $view], null)->respond(JsonResponse::HTTP_OK);
+    }
 }
