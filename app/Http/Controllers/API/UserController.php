@@ -25,7 +25,7 @@ class UserController extends ApiBaseController
             $permissions = $user->getAllPermissions()->pluck('name');
             return $this->success($user, new UserTransformer($permissions))->respond(JsonResponse::HTTP_OK);
         } else {
-            return $this->unauthorized('401', 'Khong dang nhap duoc');
+            return $this->forbidden('401', 'Khong dang nhap duoc');
         }
     }
 }

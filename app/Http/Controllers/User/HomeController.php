@@ -23,7 +23,6 @@ class HomeController extends ApiBaseController
     public function __construct(Request $request)
     {
         parent::__construct($request);
-        $this->moduleViewPath .= 'user' . '.home';
         $this->title = 'Dashboard';
         View::share([
             'title' => $this->title,
@@ -37,6 +36,6 @@ class HomeController extends ApiBaseController
     public function index()
     {
 
-        return response()->view($this->moduleViewPath . '.index');
+        return response()->view('home.index');
     }
 }

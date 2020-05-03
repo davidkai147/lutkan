@@ -66,7 +66,7 @@ trait HttpResponse
         return $this->error($errorCode, $message)->respond(JsonResponse::HTTP_UNAUTHORIZED);
     }
 
-    public function forbidden($errorCode = 'unauthenticated', string $message = null)
+    public function forbidden($errorCode = '401', string $message = null)
     {
         return $this->error($errorCode, $message)->respond(JsonResponse::HTTP_FORBIDDEN);
     }

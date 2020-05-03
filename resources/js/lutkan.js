@@ -72,3 +72,8 @@ if (token_csrf) {
 } else {
     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
+
+$("#checkAll").change(function() {
+    let checkAllValue = $(this).is(':checked');
+    $("input:checkbox:not('#checkAll')").prop('checked', checkAllValue);
+});

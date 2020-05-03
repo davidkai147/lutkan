@@ -29,7 +29,7 @@ class CheckUserPermission extends BaseMiddleware
                 return $this->unauthorized('unauthorized', 'Bạn không có quyền truy cập');
             }
         } else {
-            return $this->forbidden('unauthenticated', 'Vui lòng đăng nhập lại');
+            return $this->forbidden('401', 'Vui lòng đăng nhập lại');
         }
 
     }

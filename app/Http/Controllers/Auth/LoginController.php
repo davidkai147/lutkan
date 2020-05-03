@@ -42,12 +42,12 @@ class LoginController extends ApiBaseController
     public function login(LoginRequest $request)
     {
         if ($request->isMethod('post')) {
-            if (auth('api')->attempt($request->all())) {
-                $token = auth('api')->attempt($request->all());
+            $token = auth('api')->attempt($request->all());
+            if ($token) {
                 session(['Authorization' => $token]);
                 return $this->success(['token' => $token], null)->respond(JsonResponse::HTTP_OK);
             } else {
-                return $this->unauthorized('401', 'Khong dang nhap duoc');
+                return $this->forbidden('401', 'Khong dang nhap duoc');
             }
         }
     }
