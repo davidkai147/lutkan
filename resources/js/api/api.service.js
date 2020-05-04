@@ -1,5 +1,5 @@
 import axios from 'axios/index'
-//import {AuthService} from '../api/service/auth.service'
+import {AuthService} from '../api/service/auth.service'
 import {Cookie} from '../util/cookie'
 
 const axiosInstance = axios.create({
@@ -35,10 +35,10 @@ axiosInstance.interceptors.response.use(
         const {config, response: {status}} = error
 
         if (status === 401) {
-            return AuthService.logout().then(() => window.location.href = window.location.origin + '/cms/signin')
+            return AuthService.logout().then(() => window.location.href = window.location.origin + '/login')
         }
         if (status === 403) {
-            return window.location.href = window.location.origin + '/cms/signin'
+            return window.location.href = window.location.origin + '/login'
         }
         return Promise.reject(error)
     },

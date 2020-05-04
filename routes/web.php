@@ -13,37 +13,48 @@ use Illuminate\Support\Facades\Route;
 |
 */
 $prefixUser = CONST_USER_PREFIX;
-Route::group(['namespace' => 'Auth'], function () {
-    // ====================== LOGIN ========================
-    $prefix = '';
-    $controllerName = 'login';
-    Route::group(['prefix' => $prefix], function () use ($controllerName) {
 
-        Route::get('/', function() {
-            return redirect('/login');
-        });
-
-        $controller = ucfirst($controllerName) . 'Controller@';
-        Route::get( '/login', ['as' => 'login', 'uses' => $controller . 'showLoginForm'])->middleware('check.login');
-        Route::get( '/logout', ['as' => 'logout', 'uses' => $controller . 'logout']);
-    });
-
+Route::get('', function()
+{
+    return redirect("/login");
 });
 
-Route::group(['namespace' => 'User', 'middleware' => []], function () use ($prefixUser) {
-    // ====================== HOME ========================
-    $prefix = 'home';
-    $controllerName = 'home';
-    $controller = ucfirst($controllerName) . 'Controller@';
-    Route::group(['prefix' => $prefix], function () use ($prefix, $controller, $prefixUser) {
-        Route::get( '/', ['as' => $prefixUser . '.home', 'uses' => $controller . 'index']);
-    });
+Route::get('/{any?}', function()
+{
+    return view('layouts.master');
+})->where('any', '.*');
 
-    $prefix = 'projects';
-    $controllerName = 'project';
-    $controller = ucfirst($controllerName) . 'Controller@';
-    Route::group(['prefix' => $prefix], function () use ($prefix, $controller, $prefixUser) {
-        Route::get('/', ['as' => $prefixUser . '.projects' , 'uses' => $controller . 'index']);
-    });
-
-});
+//Route::group(['namespace' => 'Auth'], function () {
+//    // ====================== LOGIN ========================
+//    $prefix = '';
+//    $controllerName = 'login';
+//    Route::group(['prefix' => $prefix], function () use ($controllerName) {
+//
+//        Route::get('/', function() {
+//            return redirect('/login');
+//        });
+//
+//        $controller = ucfirst($controllerName) . 'Controller@';
+//        Route::get( '/login', ['as' => 'login', 'uses' => $controller . 'showLoginForm'])->middleware('check.login');
+//        Route::get( '/logout', ['as' => 'logout', 'uses' => $controller . 'logout']);
+//    });
+//
+//});
+//
+//Route::group(['namespace' => 'User', 'middleware' => []], function () use ($prefixUser) {
+//    // ====================== HOME ========================
+//    $prefix = 'home';
+//    $controllerName = 'home';
+//    $controller = ucfirst($controllerName) . 'Controller@';
+//    Route::group(['prefix' => $prefix], function () use ($prefix, $controller, $prefixUser) {
+//        Route::get( '/', ['as' => $prefixUser . '.home', 'uses' => $controller . 'index']);
+//    });
+//
+//    $prefix = 'projects';
+//    $controllerName = 'project';
+//    $controller = ucfirst($controllerName) . 'Controller@';
+//    Route::group(['prefix' => $prefix], function () use ($prefix, $controller, $prefixUser) {
+//        Route::get('/', ['as' => $prefixUser . '.projects' , 'uses' => $controller . 'index']);
+//    });
+//
+//});

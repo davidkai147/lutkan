@@ -1,7 +1,7 @@
 export * from './api.service'
 // export * from './service/accounts.service'
 // export * from './service/admins.service'
-// export * from './service/auth.service'
+export * from './service/auth.service'
 // export * from './service/contents.service'
 // export * from './service/contracts.service'
 // export * from './service/devices.service'

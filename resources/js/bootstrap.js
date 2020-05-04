@@ -7,7 +7,7 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     /* Jquery UI */
-    require('admin-lte/plugins/jQueryUI/jquery-ui.min.js');
+    require('admin-lte/plugins/jquery-ui/jquery-ui.min.js');
 
     /* Resolve conflict in jQuery UI tooltip with Bootstrap tooltip */
     $.widget.bridge('uibutton', $.ui.button);
@@ -19,7 +19,7 @@ try {
     require('admin-lte/dist/js/adminlte.min.js');
 
     /* App check */
-    require('admin-lte/plugins/iCheck/icheck.min.js');
+    require('icheck/icheck.min.js');
 
 } catch (e) {}
 

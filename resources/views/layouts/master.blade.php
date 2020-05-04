@@ -1,34 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 3 | {{ $title ?? '' }}</title>
+    <title></title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
     <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" href="{{ asset('plugins/adminlte/css/adminlte.min.css') }}">
+{{--    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">--}}
 
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-    @yield('custom_css')
+    <link href="{{ asset('assets/css/app.css') }}" rel="stylesheet">
 </head>
-@yield('body')
+<body class="hold-transition sidebar-mini login-page layout-fixed">
+<div id="app">
+    <App />
+</div>
 <!-- ./wrapper -->
-<script src="{{ asset('plugins/jquery/jquery-3.5.0.min.js') }}"></script>
-<script src="{{ asset('plugins/jquery/jquery-ui.min.js') }}"></script>
-<script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('assets/js/app.js') }}"></script>
-<script src="{{ asset('assets/js/lutkan.min.js') }}"></script>
-<script>
-    let userRole = null;
-    let userPermissions = null;
-</script>
-@yield('custom_js')
-@yield('app_js')
 </body>
 </html>
