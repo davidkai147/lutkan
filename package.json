@@ -19,6 +19,26 @@
         "resolve-url-loader": "^3.1.0",
         "sass": "^1.15.2",
         "sass-loader": "^8.0.0",
-        "vue-template-compiler": "^2.6.11"
+        "vue": "^2.5.17",
+        "vue-template-compiler": "^2.6.11",
+        "browser-sync": "^2.26.5",
+        "browser-sync-webpack-plugin": "2.0.1",
+        "element-ui": "^2.8.2",
+        "moment-timezone": "^0.5.25",
+        "popper.js": "^1.12",
+        "vuedraggable": "^2.21.0",
+        "jquery": "^3.2",
+        "bootstrap": "4.4.1"
+    },
+    "dependencies": {
+        "admin-lte": "^3.0.4",
+        "jquery-ui": "^1.12.1",
+        "luxon": "^1.15.0",
+        "vee-validate": "^2.2.7",
+        "vue-agile": "^1.0.11",
+        "vue-router": "^3.0.6",
+        "vuejs-paginate": "^2.1.0",
+        "vuex": "^3.1.1",
+        "weekstart": "^1.0.0"
     }
 }
