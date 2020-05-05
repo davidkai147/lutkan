@@ -18,11 +18,11 @@ Validator.localize('en', va_en)
 
 // Import ElementUI
 import ElementUI from 'element-ui'
-import el_ja from 'element-ui/lib/locale/lang/ja'
+import el_en from 'element-ui/lib/locale/lang/en'
 import {AuthService} from './api'
 import {Cookie} from './util/cookie'
 
-Vue.use(ElementUI, {locale: el_ja})
+Vue.use(ElementUI, {locale: el_en})
 // End ElementUI
 
 Vue.config.productionTip = false

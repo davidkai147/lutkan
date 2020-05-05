@@ -4,6 +4,7 @@ import Index from '../pages/Index'
 
 /* Route module */
 import LoginRoute from './routes/login.js'
+import HomeRoute from './routes/home.js'
 
 Vue.use(Router)
 
@@ -15,7 +16,10 @@ const router = new Router({
             path: '/',
             name: 'Index',
             component: Index,
-            redirect: '/login'
+            redirect: '/login',
+            children: [
+                HomeRoute
+            ]
         },
     ],
 })

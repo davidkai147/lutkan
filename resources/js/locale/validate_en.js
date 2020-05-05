@@ -1,11 +1,11 @@
 !function (n, e) {
   'object' == typeof exports && 'undefined' != typeof module ? module.exports = e() : 'function' == typeof define &&
-  define.amd ? define(e) : ((n = n || self).__vee_validate_locale__ja = n.__vee_validate_locale__ja ||
-    {}, n.__vee_validate_locale__ja.js = e())
+  define.amd ? define(e) : ((n = n || self).__vee_validate_locale__en = n.__vee_validate_locale__en ||
+    {}, n.__vee_validate_locale__en.js = e())
 }(this, function () {
   'use strict'
   var n, e = {
-    name: 'ja', messages: {
+    name: 'en', messages: {
       _default: function (n) {return n + 'の値が不正です'},
       after: function (n, e) {return n + 'は' + e[0] + 'の後でなければなりません'},
       alpha: function (n) {return n + 'はアルファベットのみ使用できます'},

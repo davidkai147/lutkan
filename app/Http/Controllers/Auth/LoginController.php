@@ -47,7 +47,7 @@ class LoginController extends ApiBaseController
                 session(['Authorization' => $token]);
                 return $this->success(['token' => $token], null)->respond(JsonResponse::HTTP_OK);
             } else {
-                return $this->forbidden('401', 'Khong dang nhap duoc');
+                return $this->unprocessable('validation_failed', 'Khong dang nhap duoc');
             }
         }
     }

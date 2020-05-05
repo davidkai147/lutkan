@@ -8,33 +8,34 @@
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Sign in to start your session</p>
                 <form @submit.prevent="validateBeforeSubmit">
-                    <div class="form-group has-feedback" :class="{'has-error': errors.has('Login email')}">
+                    <div class="form-group has-feedback" :class="{'has-error': errors.has('email')}">
                         <input
                             type="text"
-                            class="form-control"
-                            placeholder="email"
+                            :class="{'form-control': true, 'is-danger': errors.has('email') }"
+                            placeholder="email@exaple.com"
                             id="login_email"
-                            name="Login email"
+                            name="email"
                             v-validate="'required|email'"
-                            v-model="inputData.login_email"
+                            v-model="inputData.email"
                         >
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                        <span v-show="errors.has('Login email')" :class="{'help-block': errors.has('Login email')}">
-                            {{ errors.first('Login email') }}
+                        <span v-show="errors.has('email')" :class="{'is-danger': errors.has('email')}">
+                            {{ errors.first('email') }}
                         </span>
                     </div>
-                    <div class="form-group has-feedback" :class="{'has-error': errors.has('Login password')}">
+                    <div class="form-group has-feedback" :class="{'has-error': errors.has('password')}">
                         <input
                             type="password"
-                            class="form-control"
+                            :class="{'form-control': true, 'is-danger': errors.has('password') }"
+                            placeholder="Please input password"
                             id="login_pw"
-                            name="Login password"
+                            name="password"
                             v-validate="'required|min:3|max:100'"
-                            v-model="inputData.login_pw"
+                            v-model="inputData.password"
                         >
                         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                        <span v-show="errors.has('Login password')" :class="{'help-block': errors.has('Login password') }">
-                            {{ errors.first('Login password') }}
+                        <span v-show="errors.has('password')" :class="{'text-danger': errors.has('password') }">
+                            {{ errors.first('password') }}
                         </span>
                     </div>
                     <div class="row">
@@ -60,6 +61,10 @@
             </div>
             <!-- /.login-card-body -->
         </div>
+        <!-- /.login-box-body -->
+        <div class="overlay" :class="{show: isShow}">
+            <img src="images/loading.gif" alt="loading">
+        </div>
     </div>
 </template>
 
@@ -73,8 +78,8 @@
         data() {
             return {
                 inputData: {
-                    login_email: null,
-                    login_pw: null,
+                    email: null,
+                    password: null,
                 },
                 isShow: false,
             }
