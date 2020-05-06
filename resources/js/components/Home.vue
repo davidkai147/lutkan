@@ -12,13 +12,17 @@
 
     export default {
         name: 'Home',
-
+        computed: {
+            ...mapGetters({
+                currentUser: 'auth/currentUser',
+            }),
+        },
         beforeRouteEnter(to, from, next) {
-            // if (from.name === 'SignIn') {
-            //     store.dispatch('auth/checkAuth').then(() => next())
-            // } else {
-                 next()
-            // }
+            if (from.name === 'Login') {
+                store.dispatch('auth/checkAuth').then(() => next())
+            } else {
+                next()
+            }
         },
     }
 </script>

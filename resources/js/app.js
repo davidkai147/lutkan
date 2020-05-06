@@ -32,7 +32,33 @@ router.beforeEach((to, from, next) => {
     const nearestWithTitle = to.matched.slice().reverse().find(r => r.meta && r.meta.title)
     // If a route with a title was found, set the document (page) title to that value.
     if (nearestWithTitle) document.title = nearestWithTitle.meta.title
-    next()
+    if (to.matched.some(record => record.meta.requiredAuth)) {
+        // this route requires auth, check if logged in
+        // if not, redirect to login page.
+        if (Cookie.findByName('access_token')) {
+            // Exist cookie
+            if (!store.getters['auth/currentUser'].name) {
+                store.dispatch('auth/checkAuth').then(() => {
+                    //if (_.indexOf(to.meta.permission, Cookie.findByName('type')) !== -1) {
+                        next()
+                    // } else {
+                    ////     next('/login')
+                    // }
+                })
+            } else {
+                next({name: 'PageNotFound'})
+            }
+        } else {
+            // Not exist cookie access_token
+            window.location.href = window.location.origin + '/login'
+        }
+    } else {
+        if (to.name === 'Login' && Cookie.findByName('access_token')) {
+            next({name: 'Home'})
+        } else {
+            next()
+        }
+    }
 })
 
 const app = new Vue({

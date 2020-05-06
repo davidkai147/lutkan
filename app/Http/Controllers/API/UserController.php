@@ -11,6 +11,7 @@ use Tymon\JWTAuth\Contracts\Providers\JWT;
 class UserController extends ApiBaseController
 {
     protected $jwt;
+
     public function __construct(JWT $jwt, Request $request)
     {
         parent::__construct($request);
@@ -20,12 +21,13 @@ class UserController extends ApiBaseController
 
     public function info(Request $request)
     {
-        $user = auth('api')->user();
-        if (!empty($user)) {
-            $permissions = $user->getAllPermissions()->pluck('name');
-            return $this->success($user, new UserTransformer($permissions))->respond(JsonResponse::HTTP_OK);
-        } else {
-            return $this->forbidden('401', 'Khong dang nhap duoc');
+        if ($request->bearerToken()) {
+            $user = auth('api')->user();
+            if (!empty($user)) {
+                $permissions = $user->getAllPermissions()->pluck('name');
+                return $this->success($user, new UserTransformer($permissions))->respond(JsonResponse::HTTP_OK);
+            }
         }
+        return $this->unprocessable('404', 'Khong dang nhap duoc');
     }
 }

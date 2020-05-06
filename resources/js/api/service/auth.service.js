@@ -5,16 +5,12 @@ import {Cookie} from '../../util/cookie'
 export const AuthService = {
 
     fetchUser() {
-        return ApiService.post('users/me?with=contract').then(
+        return ApiService.post('users/info').then(
             (resp) => {
                 const {data} = resp.data;
                 return data;
             }
         );
-    },
-
-    switchUser(data) {
-        return ApiService.post('users/switch_user', {index: data});
     },
 
     logout() {

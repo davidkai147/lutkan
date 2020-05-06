@@ -74,7 +74,9 @@
 
     export default {
         name: "Login",
-
+        created() {
+            document.body.className = "login-page"
+        },
         data() {
             return {
                 inputData: {

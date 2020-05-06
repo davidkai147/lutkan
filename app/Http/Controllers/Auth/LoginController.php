@@ -13,6 +13,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\View;
 use Tymon\JWTAuth\Contracts\Providers\JWT;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -44,7 +45,8 @@ class LoginController extends ApiBaseController
         if ($request->isMethod('post')) {
             $token = auth('api')->attempt($request->all());
             if ($token) {
-                session(['Authorization' => $token]);
+                //session(['Authorization' => $token]);
+                Cookie::queue(Cookie::make("access_token", $token, 1440, null, null, null, false));
                 return $this->success(['token' => $token], null)->respond(JsonResponse::HTTP_OK);
             } else {
                 return $this->unprocessable('validation_failed', 'Khong dang nhap duoc');

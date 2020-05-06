@@ -15,7 +15,7 @@ trait HasModify
     private static function currentUser()
     {
         if (request()->bearerToken()) {
-            $user = optional(auth('user')->user());
+            $user = optional(auth('api')->user());
 
             return $user->id;
         } else {
