@@ -1,11 +1,11 @@
 <template>
     <div class="wrapper">
-        <NavbarComponent />
-        <SidebarComponent />
+        <NavbarComponent/>
+        <SidebarComponent/>
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-            <ContentHeaderComponent />
+            <ContentHeaderComponent/>
 
             <!-- Main content -->
             <section class="content">
@@ -19,7 +19,7 @@
         <div class="overlay" :class="{show: isShow}">
             <img src="images/loading.gif" alt="loading">
         </div>
-        <FooterComponent />
+        <FooterComponent/>
     </div>
 </template>
 
@@ -28,6 +28,7 @@
     import SidebarComponent from '../layouts/Sidebar.vue'
     import ContentHeaderComponent from '../layouts/ContentHeader.vue'
     import FooterComponent from '../layouts/Footer.vue'
+
     export default {
         name: "Index",
         components: {
@@ -35,6 +36,14 @@
             SidebarComponent,
             ContentHeaderComponent,
             FooterComponent
-        }
+        },
+        created() {
+            document.body.className = document.body.className.replace("login-page", "")
+        },
+        data() {
+            return {
+                isShow: false,
+            }
+        },
     }
 </script>
