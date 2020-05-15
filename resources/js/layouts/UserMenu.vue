@@ -20,7 +20,7 @@
                 </p>
             </a>
         </li>
-        <li class="nav-item" data-permission="READ_USERS">
+        <li class="nav-item" data-permission="READ_USERS" v-if="_.find(this.permissions, {name: 'READ_PROJECTS'}) !== 'undefined'">
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-users"></i>
                 <p>

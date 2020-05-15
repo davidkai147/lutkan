@@ -28,6 +28,6 @@ class UserController extends ApiBaseController
                 return $this->success($user, new UserTransformer($permissions))->respond(JsonResponse::HTTP_OK);
             }
         }
-        return $this->unprocessable('404', 'Khong dang nhap duoc');
+        return $this->forbidden('403', 'Khong dang nhap duoc');
     }
 }
